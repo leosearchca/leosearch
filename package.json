@@ -1,0 +1,1 @@
+{"description":"LeoSearch — the voice search engine. Just ask LEO.","engines":{"node":">=18"},"main":"server.js","name":"leosearch","private":true,"scripts":{"start":"node server.js"},"version":"0.1.0"}
