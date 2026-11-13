@@ -3,203 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LeoSearch — Just Ask LEO</title>
-<meta name="description" content="LeoSearch is the voice-first search engine. Ask out loud, hear the answer. Coming soon.">
+<title>LeoSearch — Coming Soon</title>
+<meta name="description" content="LeoSearch — the voice-first search engine. Just ask LEO. Coming soon.">
 <link rel="icon" type="image/png" href="leo-logo.png">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { height:100%; }
   body {
     font-family: Arial, Helvetica, sans-serif;
     background:#ffffff; color:#202124;
-    display:flex; flex-direction:column; min-height:100vh;
+    min-height:100vh; display:flex; flex-direction:column;
     -webkit-font-smoothing:antialiased;
   }
-  a { color:#202124; text-decoration:none; }
-  a:hover { text-decoration:underline; }
-
-  /* top bar — quiet, corporate */
-  header {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 24px;
-  }
-  .brand { display:flex; align-items:center; gap:10px; font-size:19px; }
-  .brand img { width:34px; height:34px; display:block; }
-  .brand .leo { color:#0b57d0; font-weight:700; }
-  .brand .search { color:#202124; font-weight:400; }
-  nav { display:flex; gap:26px; font-size:14px; color:#3c4043; }
-  nav a { color:#3c4043; }
-  .status {
-    font-size:12px; color:#0b57d0; border:1px solid #d2e3fc; background:#f0f6fe;
-    padding:5px 12px; border-radius:999px; letter-spacing:.4px; font-weight:700;
-  }
-
-  /* center stage — the Google shape: logo, wordmark, one bar */
   main {
-    flex:1; display:flex; flex-direction:column; align-items:center;
-    justify-content:center; text-align:center; padding:24px 20px 40px;
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:48px 20px 32px;
   }
-  .logo { width:148px; height:148px; display:block; }
+  .logo { width:176px; height:auto; display:block; }
   h1 {
-    margin-top:10px; font-size:56px; font-weight:400; letter-spacing:-1px; line-height:1.05;
+    margin-top:34px; font-size:34px; font-weight:300; color:#202124;
+    letter-spacing:14px; text-indent:14px; text-transform:uppercase; white-space:nowrap;
   }
-  h1 .leo { color:#0b57d0; font-weight:700; }
-  h1 .search { color:#202124; }
-  .tagline { margin-top:12px; font-size:17px; color:#5f6368; max-width:520px; line-height:1.5; }
-  .tagline strong { color:#202124; font-weight:700; }
+  .tagline { margin-top:16px; font-size:17px; color:#5f6368; letter-spacing:.2px; }
+  .tagline strong { color:#0b57d0; font-weight:700; }
 
-  .searchbar {
-    margin-top:30px; width:100%; max-width:584px; height:52px;
-    border:1px solid #dfe1e5; border-radius:999px; background:#fff;
-    display:flex; align-items:center; padding:0 8px 0 18px; gap:12px;
-    box-shadow:0 1px 6px rgba(32,33,36,.08);
+  .lockups {
+    margin-top:54px; padding-top:40px; border-top:1px solid #e8eaed;
+    display:flex; gap:56px; align-items:flex-start; justify-content:center; flex-wrap:wrap;
   }
-  .searchbar:hover, .searchbar:focus-within { box-shadow:0 2px 10px rgba(32,33,36,.16); border-color:transparent; }
-  .searchbar svg.magnifier { flex:0 0 auto; }
-  .searchbar input {
-    flex:1; border:none; outline:none; font-size:16px; color:#202124; background:transparent;
-    font-family:inherit; min-width:0;
+  .lockups img { width:188px; height:auto; display:block; }
+  @media (max-width:560px){
+    h1 { font-size:24px; letter-spacing:9px; text-indent:9px; }
+    .logo { width:138px; }
+    .lockups { gap:32px; }
+    .lockups img { width:148px; }
   }
-  .micbtn {
-    flex:0 0 auto; width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
-    background:#0b57d0; display:flex; align-items:center; justify-content:center;
-  }
-  .micbtn:hover { background:#0842a0; }
-  .micbtn.listening { background:#d93025; }
-
-  .buttons { margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
-  .btn {
-    background:#f8f9fa; border:1px solid #f8f9fa; color:#3c4043;
-    font-size:14px; padding:10px 18px; border-radius:6px; cursor:pointer; font-family:inherit;
-  }
-  .btn:hover { border-color:#dadce0; box-shadow:0 1px 2px rgba(0,0,0,.08); }
-  .btn.primary { background:#0b57d0; border-color:#0b57d0; color:#fff; font-weight:700; }
-  .btn.primary:hover { background:#0842a0; }
-  .note { margin-top:18px; font-size:13px; color:#80868b; min-height:18px; }
-
-  /* below the fold — plain columns, hairline rule, no cards */
-  .details {
-    border-top:1px solid #e8eaed; max-width:960px; width:100%;
-    margin:0 auto; padding:36px 24px 44px;
-    display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
-  }
-  .details h2 { font-size:15px; font-weight:700; color:#202124; margin-bottom:8px; }
-  .details p { font-size:14px; color:#5f6368; line-height:1.55; }
-  @media (max-width:720px){ .details { grid-template-columns:1fr; gap:22px; } h1 { font-size:42px; } .logo { width:118px; height:118px; } nav { display:none; } }
-
   footer {
-    background:#f2f2f2; border-top:1px solid #e4e4e4;
-    padding:14px 24px; font-size:13px; color:#70757a;
-    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    padding:18px 20px 22px; text-align:center;
+    font-size:13px; color:#80868b;
   }
-  footer .right { display:flex; gap:22px; }
 </style>
 </head>
 <body>
-
-<header>
-  <div class="brand">
-    <img src="leo-logo.png" alt="LeoSearch logo">
-    <span><span class="leo">Leo</span><span class="search">Search</span></span>
-  </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#brands">For Brands</a>
-    <a href="https://wrestlinginvan.com" target="_blank" rel="noopener">Wrestling in Van</a>
-  </nav>
-  <div class="status">COMING SOON</div>
-</header>
-
 <main>
   <img class="logo" src="leo-logo.png" alt="LeoSearch logo">
-  <h1><span class="leo">Leo</span><span class="search">Search</span></h1>
-  <p class="tagline">The search engine you <strong>talk to</strong>. No keyboard. No typing. No ten blue links. Ask out loud — <strong>hear the answer</strong>.</p>
+  <h1>Coming Soon</h1>
+  <p class="tagline">Just ask <strong>LEO</strong>.</p>
 
-  <form class="searchbar" id="askForm" autocomplete="off">
-    <svg class="magnifier" width="20" height="20" viewBox="0 0 24 24" fill="#9aa0a6"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
-    <input id="askInput" type="text" aria-label="Ask LEO" placeholder="Ask LEO anything…">
-    <button class="micbtn" id="micBtn" type="button" aria-label="Ask by voice" title="Ask by voice">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5.91-3a.9.9 0 0 0-1.79 0A4.19 4.19 0 0 1 12 16.1a4.19 4.19 0 0 1-4.12-4.1.9.9 0 1 0-1.79 0A5.94 5.94 0 0 0 11.09 17.9v2.2a.9.9 0 1 0 1.82 0v-2.2A5.94 5.94 0 0 0 17.91 12z"/></svg>
-    </button>
-  </form>
-
-  <div class="buttons">
-    <button class="btn primary" id="launchBtn" type="button">Launching soon</button>
-    <a class="btn" href="https://wrestlinginvan.com" target="_blank" rel="noopener" style="display:inline-block;">Follow the launch</a>
+  <div class="lockups">
+    <img src="lockup-search.png" alt="LeoSearch">
+    <img src="lockup-mail.png" alt="LeoMail">
   </div>
-  <p class="note" id="note">Voice search opens at launch. #GoAskLEO</p>
 </main>
-
-<section class="details" id="about">
-  <div>
-    <h2>Voice in</h2>
-    <p>Tap the mic and ask, the way you would ask a friend. Hands-free, eyes-free — built for real life, not a desk.</p>
-  </div>
-  <div>
-    <h2>Answer out loud</h2>
-    <p>LEO answers back in a real voice — a direct answer first, not a page of links to dig through.</p>
-  </div>
-  <div id="brands">
-    <h2>Everywhere</h2>
-    <p>Phone first. Then your watch, your TV, your car — anywhere your voice is. Brands: ask about launch partnerships at launch.</p>
-  </div>
-</section>
-
-<footer>
-  <div>Vancouver, BC, Canada</div>
-  <div class="right">
-    <span>© 2026 LeoSearch</span>
-    <span>From the creator of the Wrestling in Van Podcast</span>
-  </div>
-</footer>
-
-<script>
-  // Rotating example questions in the bar
-  var examples = [
-    "Who's the greatest wrestler of all time?",
-    "What's the weather in Vancouver?",
-    "How do I fix a leaking tap?",
-    "Who won the game last night?",
-    "What's the best pizza near me?"
-  ];
-  var input = document.getElementById('askInput');
-  var note = document.getElementById('note');
-  var ei = 0;
-  setInterval(function(){
-    if (document.activeElement !== input && !input.value) {
-      ei = (ei + 1) % examples.length;
-      input.setAttribute('placeholder', '"' + examples[ei] + '"');
-    }
-  }, 3500);
-
-  function comingSoon(q){
-    note.textContent = 'Good question' + (q ? ' — "' + q + '"' : '') + '. LEO answers out loud at launch. Stay tuned. #GoAskLEO';
-  }
-  document.getElementById('askForm').addEventListener('submit', function(e){
-    e.preventDefault(); comingSoon(input.value.trim());
-  });
-  document.getElementById('launchBtn').addEventListener('click', function(){ comingSoon(input.value.trim()); });
-
-  // Voice input where the browser supports it
-  var micBtn = document.getElementById('micBtn');
-  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (SR) {
-    var rec = new SR();
-    rec.lang = 'en-CA'; rec.interimResults = false;
-    rec.onresult = function(ev){
-      var text = ev.results[0][0].transcript;
-      input.value = text; comingSoon(text);
-    };
-    rec.onend = function(){ micBtn.classList.remove('listening'); };
-    rec.onerror = function(){ micBtn.classList.remove('listening'); };
-    micBtn.addEventListener('click', function(){
-      micBtn.classList.add('listening');
-      note.textContent = 'Listening… ask away.';
-      try { rec.start(); } catch(e) {}
-    });
-  } else {
-    micBtn.addEventListener('click', function(){ comingSoon(input.value.trim()); });
-  }
-</script>
+<footer>© 2026 LeoSearch · Vancouver, BC · #GoAskLEO</footer>
 </body>
 </html>
