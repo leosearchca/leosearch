@@ -10,7 +10,7 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     font-family: Arial, Helvetica, sans-serif;
-    background:#ffffff; color:#202124;
+    background:#150E19; color:#ffffff;
     min-height:100vh; display:flex; flex-direction:column;
     -webkit-font-smoothing:antialiased;
   }
@@ -18,35 +18,28 @@
     flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center; padding:48px 20px 32px;
   }
-  .logo { width:190px; height:auto; display:block; }
+  .logo { width:250px; height:auto; display:block; }
   h1 {
-    margin-top:36px; font-size:40px; font-weight:700; color:#202124;
+    margin-top:30px; font-size:40px; font-weight:700; color:#ffffff;
     letter-spacing:12px; text-indent:12px; text-transform:uppercase; white-space:nowrap;
   }
-  .tagline { margin-top:16px; font-size:17px; color:#5f6368; letter-spacing:.2px; }
-  .tagline strong { color:#0b57d0; font-weight:700; }
+  .tagline { margin-top:16px; font-size:17px; color:#b8b2c4; letter-spacing:.2px; }
+  .tagline strong { color:#45c8ff; font-weight:700; }
 
   .lockups {
-    margin-top:54px; padding-top:42px; border-top:1px solid #e8eaed;
-    display:flex; gap:64px; align-items:flex-start; justify-content:center; flex-wrap:wrap;
+    margin-top:52px; padding-top:42px; border-top:1px solid #2b2136;
+    display:flex; gap:56px; align-items:flex-start; justify-content:center; flex-wrap:wrap;
   }
-  .lockup { display:flex; flex-direction:column; align-items:center; }
-  .lockup img { width:150px; height:auto; display:block; }
-  .lockup .word {
-    margin-top:12px; font-size:26px; font-weight:700; letter-spacing:7px; text-indent:7px;
-    background:linear-gradient(180deg, #45c8ff 0%, #0b7fe0 100%);
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
+  .lockups img { width:218px; height:auto; display:block; }
   @media (max-width:560px){
     h1 { font-size:27px; letter-spacing:8px; text-indent:8px; }
-    .logo { width:150px; }
-    .lockups { gap:36px; }
-    .lockup img { width:118px; }
-    .lockup .word { font-size:20px; letter-spacing:5px; text-indent:5px; }
+    .logo { width:190px; }
+    .lockups { gap:30px; }
+    .lockups img { width:158px; }
   }
   footer {
     padding:18px 20px 22px; text-align:center;
-    font-size:13px; color:#80868b;
+    font-size:13px; color:#7d7392;
   }
 </style>
 </head>
@@ -57,14 +50,8 @@
   <p class="tagline">Just ask <strong>LEO</strong>.</p>
 
   <div class="lockups">
-    <div class="lockup">
-      <img src="leo-logo.png" alt="LeoSearch">
-      <div class="word">SEARCH</div>
-    </div>
-    <div class="lockup">
-      <img src="leo-logo.png" alt="LeoMail">
-      <div class="word">MAIL</div>
-    </div>
+    <img src="lockup-search.png" alt="LeoSearch">
+    <img src="lockup-mail.png" alt="LeoMail">
   </div>
 </main>
 <footer>© 2026 LeoSearch · Vancouver, BC · #GoAskLEO</footer>
