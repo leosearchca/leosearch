@@ -108,7 +108,7 @@
   <img class="logo" src="leo-logo.png" alt="LeoSearch logo">
   <form class="searchbar" id="searchForm" role="search" autocomplete="off">
     <img class="bar-slogan" src="slogan-simple-circle-anim.webp" alt="#searchLeo....">
-    <input id="searchInput" type="text" placeholder="#searchLeo...." aria-label="Search" enterkeyhint="search">
+    <input id="searchInput" type="text" aria-label="Search" enterkeyhint="search">
     <button class="icon-btn" id="micBtn" type="button" aria-label="Search by voice" title="Search by voice">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5.91-3a.9.9 0 0 0-1.8 0A4.09 4.09 0 0 1 12 16.09a4.09 4.09 0 0 1-4.11-4.09.9.9 0 1 0-1.8 0A5.89 5.89 0 0 0 11.1 17.82V20H8.4a.9.9 0 1 0 0 1.8h7.2a.9.9 0 1 0 0-1.8h-2.7v-2.18A5.89 5.89 0 0 0 17.91 12z"/></svg>
     </button>
@@ -161,7 +161,7 @@
     recog.maxAlternatives = 1;
     recog.onstart = function(){
       listening = true; micBtn.classList.add('listening');
-      input.placeholder = 'Listening…'; say('Listening… say it.');
+      say('Listening… say it.');
     };
     recog.onresult = function(ev){
       var txt = '';
@@ -178,7 +178,7 @@
     };
     recog.onend = function(){
       listening = false; micBtn.classList.remove('listening');
-      input.placeholder = '#searchLeo....'; syncSlogan();
+      syncSlogan();
     };
     try { recog.start(); } catch(e) { /* already running */ }
   });
