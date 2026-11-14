@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leosearch.ca/sitemap.xml
