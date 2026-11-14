@@ -121,9 +121,6 @@
     <button class="icon-btn" id="micBtn" type="button" aria-label="Search by voice" title="Search by voice">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5.91-3a.9.9 0 0 0-1.8 0A4.09 4.09 0 0 1 12 16.09a4.09 4.09 0 0 1-4.11-4.09.9.9 0 1 0-1.8 0A5.89 5.89 0 0 0 11.1 17.82V20H8.4a.9.9 0 1 0 0 1.8h7.2a.9.9 0 1 0 0-1.8h-2.7v-2.18A5.89 5.89 0 0 0 17.91 12z"/></svg>
     </button>
-    <button class="icon-btn" id="leoBtn" type="submit" aria-label="Ask LEO" title="Ask LEO">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.00,1.10 L14.84,3.25 L18.15,2.88 L19.33,6.27 L22.43,8.20 L21.38,11.34 L22.96,14.33 L20.30,16.41 L19.98,19.71 L16.65,20.05 L14.56,22.29 L11.69,20.89 L9.19,21.80 L7.28,19.55 L4.27,18.96 L3.64,16.08 L1.17,13.91 L2.69,10.69 L1.86,7.49 L5.09,5.78 L6.55,2.56 L10.09,3.00 Z M12,6.9 L15.9,8.3 L16.3,12.3 L14.6,16.0 L12,18.1 L9.4,16.0 L7.7,12.3 L8.1,8.3 Z"/><polygon points="13.7,10.9 16.0,11.5 15.8,12.4 13.8,11.9"/><polygon points="10.3,10.9 8.0,11.5 8.2,12.4 10.2,11.9"/><polygon points="10.95,14.7 13.05,14.7 12,16.0"/><polygon points="11.55,16.35 12.45,16.35 12,17.3"/></svg>
-    </button>
   </form>
   <p class="search-status" id="searchStatus" aria-live="polite"></p>
 </main>
@@ -134,7 +131,6 @@
   var input = document.getElementById('searchInput');
   var status = document.getElementById('searchStatus');
   var micBtn = document.getElementById('micBtn');
-  var leoBtn = document.getElementById('leoBtn');
 
   function syncSlogan(){
     var hide = document.activeElement === input || input.value.length > 0;
@@ -149,15 +145,11 @@
 
   function submitSearch(){
     var q = input.value.trim();
-    if(!q){ say('Tap the mic and say it — or type it here and tap the lion.'); input.focus(); return; }
+    if(!q){ say('Tap the mic and say it — or type it here and press Enter.'); input.focus(); return; }
     say('You\'re early, Leo fan. Full search launches soon — and <b>&ldquo;' + esc(q) + '&rdquo;</b> is exactly the kind of thing LEO will answer out loud.');
   }
 
   form.addEventListener('submit', function(e){ e.preventDefault(); submitSearch(); });
-
-  leoBtn.addEventListener('click', function(){
-    /* type=submit inside the form — the form submit handler runs the search. */
-  });
 
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   var listening = false, recog = null;
